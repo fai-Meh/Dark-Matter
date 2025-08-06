@@ -1,0 +1,1955 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "anticregular";
+    src: url("../fonts/antic/antic-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "zillaslab";
+    src: url("../fonts/zillaslab/zillaslab-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "earthorbiter";
+    src: url("../fonts/earth/earthorbiter-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "earthorbiterbold";
+    src: url("../fonts/earth/earthorbiterbold-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "juralight";
+    src: url("../fonts/jura/jura-light-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "juramedium";
+    src: url("../fonts/jura/jura-medium-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "juraregular";
+    src: url("../fonts/jura/jura-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: white;
+}
+
+.star.blink {
+    animation: blinking 0.3s infinite alternate;
+}
+
+@keyframes blinking {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+body {
+    overflow: hidden;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.audioknop {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 999;
+}
+
+.musicknop {
+    position: absolute;
+    top: 20px;
+    right: 11px;
+    z-index: 9999;
+}
+
+.playing {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    display: none;
+    cursor: pointer;
+}
+
+.playing:hover .playing__bar {
+    opacity: 0.5;
+    animation-play-state: paused;
+}
+
+.musicgone.playing__bar {
+    opacity: 0.5;
+    animation-play-state: paused;
+}
+
+.playing__bar {
+    display: inline-block;
+    background: rgb(63, 170, 21);
+    width: 30%;
+    height: 100%;
+    animation: up-and-down 1.3s ease infinite alternate;
+}
+
+.playing__bar1 {
+    height: 60%;
+    margin: 1px;
+}
+
+.playing__bar2 {
+    height: 30%;
+    animation-delay: -2.2s;
+    margin: 1px;
+}
+
+.playing__bar3 {
+    height: 75%;
+    animation-delay: -3.7s;
+    margin: 1px;
+}
+
+
+/* playing2  */
+
+.playing2 {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    display: none;
+    cursor: pointer;
+}
+
+.playing2:hover .playing2__bar {
+    opacity: 0.5;
+    animation-play-state: paused;
+}
+
+.musicgone.playing2__bar {
+    opacity: 0.5;
+    animation-play-state: paused;
+}
+
+.playing2__bar {
+    display: inline-block;
+    background: rgb(63, 170, 21);
+    width: 30%;
+    height: 100%;
+    animation: up-and-down 1.3s ease infinite alternate;
+}
+
+.playing2__bar1 {
+    height: 60%;
+    margin: 1px;
+}
+
+.playing2__bar2 {
+    height: 30%;
+    animation-delay: -2.2s;
+    margin: 1px;
+}
+
+.playing2__bar3 {
+    height: 75%;
+    animation-delay: -3.7s;
+    margin: 1px;
+}
+
+@keyframes up-and-down {
+    10% {
+        height: 30%;
+    }
+    30% {
+        height: 100%;
+    }
+    60% {
+        height: 50%;
+    }
+    80% {
+        height: 75%;
+    }
+    100% {
+        height: 60%;
+    }
+}
+
+#main-container {
+    height: 540px;
+    width: 960px;
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+    overflow: hidden;
+    top: 0;
+}
+
+#container-spaceship {
+    height: 540px;
+    width: 960px;
+    position: absolute;
+    margin: 0 auto;
+    overflow: hidden;
+    border: black 2px solid;
+    top: 0;
+    user-select: none;
+}
+
+
+/* openings */
+
+.knop {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    line-height: 50px;
+    top: 45%;
+    left: 30%;
+    text-align: center;
+    font-family: "earthorbiterbold";
+}
+
+.openingscreen {
+    width: 100%;
+    height: 100%;
+}
+
+.cloud {
+    background-image: url(../imgs/clou.png);
+    background-size: 100% 100%;
+    width: 500px;
+    height: 150px;
+    transform: translatex(-400px);
+    top: 35%;
+    position: absolute;
+    animation: wee 6s linear forwards;
+    z-index: -1;
+}
+
+@keyframes wee {
+    0% {
+        transform: translatex(0);
+    }
+    100% {
+        transform: translatex(650px);
+        opacity: 0;
+    }
+}
+
+.spaceship-opening {
+    background-image: url(../imgs/spaceship-opening.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50px;
+    height: 300px;
+    position: absolute;
+    display: none;
+    z-index: 9999;
+    top: -40px;
+    left: -40px;
+    animation: flyby 2s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+
+@keyframes flyby {
+    0% {
+        top: -40px;
+        left: -40px;
+        transform: scale(0.2);
+    }
+    100% {
+        top: 900px;
+        left: 900px;
+        transform: scale(5);
+    }
+}
+
+.nothing {
+    display: 0;
+}
+
+.wakey {
+    width: 960px;
+    height: 540px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fadeout {
+    background-color: black;
+    animation-name: fadeout;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.knop h2 {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    line-height: 50px;
+    top: 200px;
+    left: -39px;
+    text-align: center;
+    font-family: "juralight";
+    background-color: white;
+    cursor: pointer;
+}
+
+.fadein {
+    z-index: 1;
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#spaceship {
+    background-image: url(../imgs/sslv.png);
+    background-size: 100% 100%;
+    width: 960px;
+    height: 540px;
+    overflow: hidden;
+    opacity: 0;
+    position: absolute;
+}
+
+.guide {
+    position: absolute;
+    bottom: 20px;
+    left: 37%;
+}
+
+h3 {
+    font-size: 16px;
+    font-family: "juralight";
+    color: rgb(212, 212, 212);
+    text-align: center;
+    font-weight: 300;
+}
+
+.stars {
+    width: 1.5px;
+    height: 1.5px;
+    background-color: whitesmoke;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    z-index: -2;
+}
+
+@keyframes knipper {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* .....................................................................inside spaceship screens */
+
+.hal-screen {
+    background-image: url(../imgs/screens/1x/Artboard\ 14.png);
+    background-size: cover;
+    width: 262px;
+    height: 176px;
+    bottom: 154px;
+    left: 353px;
+}
+
+.on {
+    position: absolute;
+    opacity: 0;
+}
+
+.on:hover {
+    opacity: 1;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+h5 {
+    font-family: "zillaslab";
+    position: absolute;
+    text-align: CENTER;
+    top: 87px;
+    color: rgb(12, 16, 34);
+    left: 75px;
+    letter-spacing: 10px;
+}
+
+h6 {
+    font-family: "zillaslab";
+    position: absolute;
+    text-align: center;
+    top: 100px;
+    left: 70px;
+    letter-spacing: 8px;
+    transform: rotate(333deg);
+    color: red;
+}
+
+.id-screen {
+    background-image: url(../imgs/screens/1x/infoon.png);
+    background-size: cover;
+    width: 172px;
+    height: 171px;
+    bottom: 109px;
+    left: 658px;
+}
+
+.target-screen {
+    background-image: url(../imgs/screens/1x/targeton.png);
+    background-size: cover;
+    width: 205px;
+    height: 188px;
+    right: -9px;
+    top: 315px;
+}
+
+.games-screen {
+    background-image: url(../imgs/screens/1x/GAMEon.png);
+    background-size: cover;
+    width: 347px;
+    height: 248px;
+    left: -19px;
+    top: 263px;
+}
+
+
+/* switch */
+
+.theswitch {
+    background-image: url(../imgs/switchup_1.png);
+    background-size: cover;
+    width: 41px;
+    height: 60px;
+    position: absolute;
+    top: 290px;
+    left: 322px;
+}
+
+.theswitchdown {
+    background-image: url(../imgs/switchdown_1.png);
+    background-size: cover;
+    width: 41px;
+    height: 60px;
+    position: absolute;
+    top: 290px;
+    left: 322px;
+    display: none;
+}
+
+
+/* hal */
+
+.screen-one {
+    top: 0;
+    left: 0;
+    width: 960px;
+    height: 540px;
+    background-color: #141b2d;
+    margin: 0 auto;
+    position: absolute;
+    display: none;
+}
+
+.text-screen {
+    background-color: #e9e9e9;
+    margin: 0 auto;
+    width: 800px;
+    height: 400px;
+    border: solid 6px #141b2d;
+    font-family: "arial";
+    font-size: 24px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+
+/* typing animation /////////////////////////////////////////////////////////////*/
+
+
+/* responses  */
+
+.whyresponse,
+.response2 {
+    display: none;
+}
+
+.whyresponse p,
+.response2 p {
+    font-family: "zillaslab";
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.response2 p:nth-child(1) {
+    width: 20em;
+    -webkit-animation: type 2s steps(40, end);
+    animation: type 2s steps(40, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.response2 p:nth-child(2) {
+    width: 22em;
+    opacity: 0;
+    -webkit-animation: type2 2s steps(40, end);
+    animation: type2 2s steps(40, end);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.whyresponse p:nth-child(1) {
+    width: 20em;
+    -webkit-animation: type 2s steps(40, end);
+    animation: type 2s steps(40, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.whyresponse p:nth-child(2) {
+    width: 22em;
+    opacity: 0;
+    -webkit-animation: type2 2s steps(40, end);
+    animation: type2 2s steps(40, end);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.whyresponse p:nth-child(3) {
+    width: 29em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+
+/* responses  */
+
+.css-typing p {
+    font-family: "zillaslab";
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.css-typing p:nth-child(1) {
+    width: 20em;
+    -webkit-animation: type 2s steps(40, end);
+    animation: type 2s steps(40, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(2) {
+    width: 15em;
+    opacity: 0;
+    -webkit-animation: type2 2s steps(40, end);
+    animation: type2 2s steps(40, end);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(3) {
+    width: 9em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes type {
+    0% {
+        width: 0;
+    }
+    99.9% {
+        border-right: 0.15em solid orange;
+    }
+    100% {
+        border: none;
+    }
+}
+
+@-webkit-keyframes type {
+    0% {
+        width: 0;
+    }
+    99.9% {
+        border-right: 0.15em solid orange;
+    }
+    100% {
+        border: none;
+    }
+}
+
+@keyframes type2 {
+    0% {
+        width: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    99.9% {
+        border-right: 0.15em solid orange;
+    }
+    100% {
+        opacity: 1;
+        border: none;
+    }
+}
+
+@-webkit-keyframes type2 {
+    0% {
+        width: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    99.9% {
+        border-right: 0.15em solid orange;
+    }
+    100% {
+        opacity: 1;
+        border: none;
+    }
+}
+
+@keyframes type3 {
+    0% {
+        width: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes type3 {
+    0% {
+        width: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@-webkit-keyframes blink {
+    50% {
+        border-color: tranparent;
+    }
+}
+
+.options {
+    position: absolute;
+    width: 700px;
+    min-height: auto;
+    right: -400px;
+    display: none;
+}
+
+.option {
+    width: 200px;
+    height: 50px;
+    background-color: #e9e9e9;
+    padding: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+h4 {
+    font-family: "juralight";
+    font-size: 20px;
+    color: #141b2d;
+}
+
+.terug {
+    position: absolute;
+    left: 83px;
+    width: 100px;
+    height: 50px;
+    background-color: #e9e9e9;
+    padding: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+/* id screen */
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.screen-two {
+    width: 960px;
+    height: 540px;
+    background-color: #141b2d;
+    position: absolute;
+    margin: 0 auto;
+    display: none;
+}
+
+.fingerprint {
+    background-image: url(../imgs/fingerprint.png);
+    background-size: cover;
+    height: 320px;
+    width: 240px;
+    transform: translate(-220px, -20px);
+}
+
+.id-info {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    right: 90px;
+    top: 50px;
+}
+
+.guidetekst {
+    color: white;
+    font-family: "juralight";
+    text-align: center;
+    width: 400px;
+    position: absolute;
+    left: 30%;
+}
+
+.card {
+    font-family: "zillaslab";
+}
+
+.pfp {
+    width: 170px;
+    height: 170px;
+    background-size: cover;
+    background-position: center;
+    transform: translate(100px, 10px);
+    border: 1px black solid;
+}
+
+.pinfo {
+    transform: translate(50px, 50px);
+}
+
+.pinfo p {
+    font-family: "zillaslab";
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.pinfo p:nth-child(1) {
+    width: 6em;
+    -webkit-animation: type 2s steps(40, end);
+    animation: type 2s steps(40, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.pinfo p:nth-child(2) {
+    width: 15em;
+    opacity: 0;
+    -webkit-animation: type2 2s steps(40, end);
+    animation: type2 2s steps(40, end);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.pinfo p:nth-child(3) {
+    width: 9em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+
+/* target screen */
+
+.screen-three {
+    top: 0;
+    left: 0;
+    width: 960px;
+    height: 540px;
+    background-color: #141b2d;
+    margin: 0 auto;
+    position: absolute;
+    display: none;
+}
+
+.text-screen2 {
+    background-color: #e9e9e9;
+    margin: 0 auto;
+    width: 900px;
+    height: 460px;
+    border: solid 6px #141b2d;
+    font-family: "arial";
+    font-size: 24px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.jar {
+    background-image: url(../imgs/jar.png);
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    width: 200px;
+    position: absolute;
+    border: #141b2d 5px solid;
+    left: 80px;
+    background-color: rgb(145, 145, 145);
+}
+
+.missiontext {
+    transform: translate(160px, -10px);
+}
+
+.missiontext p {
+    font-family: "zillaslab";
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 30px;
+}
+
+.title {
+    padding-bottom: 10px;
+}
+
+.missiontext p:nth-child(1) {
+    width: 6em;
+    -webkit-animation: type 2s steps(40, end);
+    animation: type 1s steps(40, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.missiontext p:nth-child(2) {
+    width: 30em;
+    opacity: 0;
+    -webkit-animation: type2 2s steps(40, end);
+    animation: type2 2s steps(40, end);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.missiontext p:nth-child(3) {
+    width: 30em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.missiontext p:nth-child(4) {
+    width: 20em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 6s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.missiontext p:nth-child(5) {
+    width: 20em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 7s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.missiontext p:nth-child(6) {
+    width: 35em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 9s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.missiontext p:nth-child(7) {
+    width: 35em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 11s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.missiontext p:nth-child(8) {
+    width: 35em;
+    font-weight: 700;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
+    animation: type3 1s steps(20, end), blink 0.5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 12s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+
+/* game screen */
+
+#screen-four {
+    top: 0;
+    left: 0;
+    width: 960px;
+    height: 540px;
+    margin: 0 auto;
+    position: absolute;
+    display: none;
+}
+
+.opening-gamescreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    height: 100px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    transform: translate(-50%, -50%);
+    align-content: center;
+    align-items: center;
+}
+
+#screen-four h1 {
+    color: white;
+    font-family: "juralight";
+}
+
+.opening-gamescreen p {
+    color: white;
+    font-size: 20px;
+    padding: 23px;
+    font-family: "juralight";
+}
+
+.opening-gamescreen H2 {
+    color: rgb(0, 0, 0);
+    width: 200px;
+    left: 30%;
+    font-size: 20px;
+    font-family: "juralight";
+    transition: 1s 1s ease-in-out;
+}
+
+.startmissions h2 {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 50px;
+    text-align: center;
+    font-family: "juralight";
+    background-color: white;
+    cursor: pointer;
+}
+
+.startmissions {
+    display: none;
+}
+
+
+/* switches game */
+
+.switchesgame-container {
+    width: 960px;
+    height: 540px;
+    background-color: #141b2d;
+    margin: 0 auto;
+    position: absolute;
+    display: none;
+}
+
+.switches-game {
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url(../imgs/img-switches/bgswitches2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 20px;
+    width: 900px;
+    height: 500px;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.switcheswrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.switches {
+    position: relative;
+    width: 90px;
+    height: 200px;
+    background-color: #43526a;
+}
+
+.button {
+    width: 60px;
+    height: 100px;
+    position: absolute;
+    background-color: #141b2d;
+    bottom: 10px;
+    left: 15px;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.lightwrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.nextbutton h4 {
+    color: black;
+}
+
+.light {
+    width: 50px;
+    height: 50px;
+    background-color: #930000;
+}
+
+.light4,
+.light1 {
+    background-color: rgb(0, 205, 38);
+}
+
+.switchtext {
+    font-family: "juralight";
+    text-align: center;
+    color: white;
+    width: 300px;
+    height: 50px;
+    position: absolute;
+    left: 35%;
+    font-size: 20px;
+    bottom: -10px;
+}
+
+strong {
+    font-weight: 900;
+}
+
+.openen {
+    text-align: center;
+    display: none;
+    color: white;
+    font-size: 30px;
+    transform: translateY(300px);
+}
+
+
+/* meteoroids game */
+
+.meteoroidsgame-container {
+    width: 960px;
+    height: 540px;
+    background-color: #141b2d;
+    margin: 0 auto;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    display: none;
+}
+
+.meteoroids-game {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 55px;
+    top: 20px;
+    width: 850px;
+    height: 450px;
+}
+
+.nextstyle {
+    font-family: "juralight";
+    width: 100px;
+    height: 50px;
+    background-color: #e9e9e9;
+    position: absolute;
+    right: 40px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.nextbutton,
+.nextbutton2,
+.nextbutton3 {
+    opacity: 0.2;
+}
+
+.metetext {
+    font-family: "juraregular";
+    text-align: center;
+    color: white;
+    position: absolute;
+    width: 310px;
+    height: 50px;
+    left: 35%;
+    font-size: 16px;
+    bottom: 0px;
+}
+
+.starswrap {
+    width: 850px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+}
+
+.metestars {
+    width: 1px;
+    height: 1px;
+    background-color: whitesmoke;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    z-index: 0;
+}
+
+@keyframes knipper {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.mete {
+    background-image: url(../imgs/meterodarker.png);
+    background-size: cover;
+    background-repeat: none;
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    left: -1000px;
+    top: 0;
+    cursor: pointer;
+    animation: moveMeteor 1s linear infinite;
+    animation-play-state: running;
+    display: none;
+}
+
+.movingmete {
+    animation-play-state: running;
+    display: block;
+}
+
+@keyframes moveMeteor {
+    0% {
+        transform: translateX(-1000px);
+    }
+    100% {
+        transform: translateX(1000px);
+    }
+}
+
+.opac {
+    animation: opa 1s linear;
+}
+
+@keyframes opa {
+    0% {
+        transform: skew(0);
+    }
+    100% {
+        transform: skew(100deg);
+    }
+}
+
+.score {
+    position: absolute;
+    font-family: "juralight";
+    width: 50px;
+    height: 50px;
+    background-color: #e9e9e9;
+    left: 40px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 40px;
+}
+
+.metewrap {
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    overflow: hidden;
+    top: 5%;
+    left: 0;
+    opacity: 0.4;
+}
+
+.spaceship2 {
+    background-image: url(../imgs/spaceship2.png);
+    background-size: cover;
+    width: 200px;
+    height: 90px;
+    position: absolute;
+    right: 0;
+    bottom: 40%;
+    animation: move 2s infinite;
+    animation-play-state: paused;
+    animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@keyframes move {
+    0% {
+        transform: translatey(0);
+    }
+    50% {
+        transform: translatey(100px) rotate(-7deg);
+    }
+    90% {
+        transform: translatey(-100px) rotate(7deg);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.startstyle {
+    text-align: center;
+    width: 210px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    top: 40%;
+    left: 39%;
+    cursor: pointer;
+    background-color: white;
+}
+
+.buttonstyle h2 {
+    color: black;
+    font-family: "juralight";
+}
+
+.startstyle h2 {
+    color: rgb(0, 0, 0);
+    font-family: "juraregular";
+}
+
+.restartbutton2 {
+    font-family: "juralight";
+    background-color: #e9e9e9;
+    text-align: center;
+    width: 210px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    display: none;
+    top: 40%;
+    left: 39%;
+    cursor: pointer;
+}
+
+
+/* blackhole game */
+
+.blackholegame-container {
+    width: 960px;
+    height: 540px;
+    background-color: #141b2d;
+    margin: 0 auto;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    display: none;
+    user-select: none;
+}
+
+#blackholescreen {
+    width: 850px;
+    height: 450px;
+    left: 55px;
+    top: 20px;
+    position: absolute;
+    margin: 0 auto;
+    background-color: black;
+    overflow: hidden;
+    user-select: none;
+}
+
+#blackholegame {
+    width: 960px;
+    height: 540px;
+    position: absolute;
+    margin: 0 auto;
+    opacity: 0.5;
+}
+
+.bspaceship {
+    background-image: url(../imgs/spaceship.png);
+    background-size: 100% 100%;
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    bottom: 40%;
+    left: 50%;
+}
+
+.flame {
+    background-image: url(../imgs/flame.png);
+    background-size: 100% 100%;
+    width: 25px;
+    height: 15px;
+    position: absolute;
+    bottom: 10px;
+    right: -13px;
+    display: none;
+}
+
+.enginebutton {
+    font-family: "juralight";
+    width: 308px;
+    height: 50px;
+    background-color: #e9e9e9;
+    position: absolute;
+    right: 35%;
+    bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.enginebutton:hover {
+    opacity: 0.5;
+}
+
+.translate {
+    transform: translatex(-30px);
+}
+
+.blackhole {
+    background-image: url(../imgs/blackhole4.png);
+    background-size: 100% 100%;
+    width: 400px;
+    height: 900px;
+    position: absolute;
+    right: -80px;
+    bottom: -120px;
+}
+
+.startbutton3 {
+    font-family: "juralight";
+    width: 200px;
+    height: 50px;
+    background-color: #e9e9e9;
+    position: absolute;
+    right: 40%;
+    bottom: 50%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.restart {
+    font-family: "juralight";
+    width: 200px;
+    height: 50px;
+    background-color: #e9e9e9;
+    position: absolute;
+    right: 40%;
+    bottom: 50%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    display: none;
+}
+
+.font {
+    color: rgb(0, 0, 0);
+    font-family: "juramedium";
+    font-weight: 900;
+    width: 400px;
+    left: 280px;
+}
+
+.lastmission-container {
+    width: 960px;
+    height: 540px;
+    background-color: #00000000;
+    margin: 0 auto;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    display: none;
+    user-select: none;
+    /* border: 1px green solid; */
+}
+
+.planetscontainer {
+    width: 960px;
+    height: 540px;
+    top: 0;
+    position: absolute;
+    overflow: hidden;
+    display: block;
+    user-select: none;
+}
+
+.figure {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    cursor: pointer;
+}
+
+.figure:hover {
+    transform: scale(1.1);
+}
+
+.planet1 {
+    background-image: url(../imgs/planets/kepler.png);
+    width: 422px;
+    height: 263px;
+    bottom: 1px;
+    left: -113px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.planet2 {
+    background-image: url(../imgs/planets/Eris.png);
+    width: 417px;
+    height: 285px;
+    top: 4px;
+    left: 161px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 1s;
+}
+
+.planet3 {
+    background-image: url(../imgs/planets/Nibiru.png);
+    width: 200px;
+    height: 120px;
+    top: 70px;
+    right: 200px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 1.5s;
+}
+
+.blackholelast {
+    background-image: url(../imgs/planets/blackhole.png);
+    width: 260px;
+    height: 120px;
+    top: 200px;
+    right: 10px;
+    opacity: 0;
+    transform: rotate(-15deg);
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 2s;
+}
+
+.lastguide {
+    font-family: "juramedium";
+    color: white;
+    text-align: center;
+    width: 100%;
+    transform: translateY(489px);
+}
+
+.warning {
+    width: 379px;
+    height: 243px;
+    background-color: white;
+    margin: 0 auto;
+    transform: translatey(172px);
+    display: none;
+}
+
+.warning h2 {
+    color: rgb(156, 0, 0);
+    font-family: "earthorbiter";
+    text-align: center;
+    padding: 20px;
+    animation: warning-scale 1s ease-in-out infinite;
+}
+
+@keyframes warning-scale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.warning:focus h2 {
+    animation: warning-scale-big 0.3s ease-in-out forwards;
+}
+
+@keyframes warning-scale-big {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+.warning p {
+    color: rgb(0, 0, 0);
+    font-family: "juramedium";
+    text-align: center;
+    padding: 20px;
+    font-weight: 900;
+    line-height: 30px;
+}
+
+.warningknop {
+    font-family: "juralight";
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    border: black 1px solid;
+    right: 136px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.warningknop h3 {
+    color: black;
+}
+
+.warningknop h3:hover {
+    background-color: #000000;
+    color: white;
+}
+
+
+/* targetplanet */
+
+.targetplanet {
+    position: absolute;
+    height: 540px;
+    bottom: 0;
+    left: -1;
+    display: none;
+    overflow: hidden;
+}
+
+.ground {
+    background-image: url(../imgs/ground.png);
+    width: 960px;
+    height: 225px;
+    transform: translateY(330px);
+}
+
+.alien {
+    background-image: url(../imgs/alien.png);
+    background-size: cover;
+    width: 98px;
+    height: 144px;
+    transform: translate(804px, 82px);
+    cursor: pointer;
+}
+
+.rock {
+    background-image: url(../imgs/rock.png);
+    width: 227px;
+    height: 121px;
+    bottom: 89px;
+    right: 0;
+    position: absolute;
+}
+
+.bigcloud {
+    background-image: url(../imgs/bigcloud.png);
+    width: 850px;
+    height: 448px;
+    bottom: 5px;
+    right: -320px;
+    position: absolute;
+}
+
+.cloud1 {
+    background-image: url(../imgs/cloud1.png);
+    position: absolute;
+    width: 849px;
+    height: 449px;
+    top: 0;
+}
+
+.cloud2 {
+    background-image: url(../imgs/cloud2.png);
+    position: absolute;
+    width: 849px;
+    height: 449px;
+    top: 86px;
+    left: -140px;
+}
+
+.fade {
+    opacity: 0;
+    transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+    transform: translateX(1200px);
+    /* Add a transition to make the fade and movement smooth */
+}
+
+.fade2 {
+    opacity: 0;
+    transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+    transform: translateX(-1200px);
+    /* Add a transition to make the fade smooth */
+}
+
+.alienbox {
+    width: 300px;
+    height: 360px;
+    transform: translateY(70px);
+    background-color: rgb(110, 110, 110);
+    border: 2px rgb(255, 255, 255) solid;
+    margin: 0 auto;
+    display: none;
+}
+
+.alien3 {
+    background-image: url(../imgs/alien3.png);
+    width: 280px;
+    height: 360px;
+    cursor: pointer;
+}
+
+.angrynojar {
+    background-image: url(../imgs/angrynojar.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translatey(35px);
+    width: 280px;
+    height: 360px;
+    cursor: pointer;
+    display: none;
+}
+
+.displayjar {
+    position: absolute;
+    top: 23px;
+    left: 40px;
+    height: 100px;
+    width: 68px;
+    background-color: rgb(66 66 66);
+    border: 1px rgb(255, 255, 255) solid;
+    display: none;
+}
+
+.thejar {
+    background-image: url(../imgs/jar.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: -2px;
+    left: -20px;
+    transform: rotate(342deg);
+}
+
+.blinke {
+    animation: blinke 1s infinite alternate;
+    cursor: pointer;
+}
+
+@keyframes blinke {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.blinke:hover {
+    opacity: 1;
+    animation: none;
+}
+
+.targetchecked {
+    display: none;
+}
+
+.target {
+    background-image: url(../imgs/jar.png);
+    background-size: cover;
+    width: 220px;
+    height: 350px;
+    transform: rotate(342deg);
+    position: absolute;
+    left: 200px;
+    top: 100px;
+}
+
+.checked {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    right: 400px;
+    top: 240px;
+    background-color: white;
+}
+
+.checked:after {
+    content: "\2713";
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+    font-size: 60px;
+    opacity: 0;
+    animation: checkmark 0.5s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes checkmark {
+    from {
+        opacity: 0;
+        transform: scale(0) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.gameover {
+    height: 540px;
+    width: 960px;
+    position: absolute;
+    margin: 0 auto;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.521);
+}
+
+.earthgif {
+    background-image: url(../imgs/eargt-animated.gif);
+    background-size: cover;
+    width: 990px;
+    height: 857px;
+    left: -2px;
+    position: absolute;
+    bottom: -500px;
+    transform: rotate(100deg);
+}
+
+.darker {
+    filter: brightness(50%);
+}
+
+.lasttitle {
+    color: white;
+    transform: translate(0px, 140px);
+    text-align: center;
+    opacity: 0;
+    animation: fade-in 0.5s ease-out forwards;
+    animation-delay: 3s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.lasttitle h1 {
+    font-family: "earthorbiter";
+}
+
+.lasttitle h2 {
+    font-family: "juralight";
+    color: #509727;
+    text-shadow: 0px 2px 0px rgba(20, 20, 20, 0.52);
+}
+
+.earthgif2 {
+    background-image: url(../imgs/eargt-animated.gif);
+    background-size: cover;
+    width: 200px;
+    height: 147px;
+    right: 140px;
+    position: absolute;
+    top: 20px;
+    display: none;
+    filter: brightness(15%);
+}
+
+.return {
+    width: 73px;
+    height: 26px;
+    position: absolute;
+    background-color: white;
+    bottom: 244px;
+    z-index: 1;
+    left: 305px;
+    display: none;
+}
+
+.return p {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 26px;
+    font-family: "earthorbiter";
+    font-weight: 900;
+    color: blue;
+    animation: colorchange 2s infinite;
+}
+
+@keyframes colorchange {
+    0% {
+        color: blue;
+    }
+    50% {
+        color: green;
+    }
+    100% {
+        color: blue;
+    }
+}
